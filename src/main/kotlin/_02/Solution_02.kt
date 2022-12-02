@@ -14,11 +14,24 @@ fun main() {
         "CX" to 7, "CY" to 2, "CZ" to 6,
     )
 
-    var score = 0
+    // X = loose
+    // Y = draw
+    // Z = win
+    val conversion = mapOf(
+        "AX" to "AZ", "AY" to "AX", "AZ" to "AY",
+        "BX" to "BX", "BY" to "BY", "BZ" to "BZ",
+        "CX" to "CY", "CY" to "CZ", "CZ" to "CX",
+    )
+
+    var result1 = 0
+    var result2 = 0
 
     for (line in lines) {
-        score += points[line.filter { !it.isWhitespace() }]!!
+        val key = line.filter { !it.isWhitespace() }
+        result1 += points[key]!!
+        result2 += points[conversion[key]!!]!!
     }
 
-    println("Result 1: $score")
+    println("Result 1: $result1")
+    println("Result 2: $result2")
 }
