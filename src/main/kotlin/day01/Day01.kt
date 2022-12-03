@@ -1,4 +1,4 @@
-package _01
+package day01
 
 import util.FileUtil
 
